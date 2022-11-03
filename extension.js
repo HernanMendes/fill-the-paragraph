@@ -3,27 +3,25 @@ const vscode = require('vscode');
 /**
  * @param {vscode.ExtensionContext} context
  */
+
 function activate(context) {
 	console.log('Congratulations, your extension "fill-the-paragraph" is now active!');
 
 	let disposable = vscode.commands.registerCommand('fill-the-paragraph.fill', function () {
 		// Get the active text editor
 		let editor = vscode.window.activeTextEditor;
-		vscode.window.showInformationMessage(`WARNING: Line is too long!`);
 		let maxLineLength = vscode.workspace.getConfiguration('fill-the-paragraph').get('maxLineLength');
 
 		if (editor) {
 			let document = editor.document;
-			let line = vscode.window.activeTextEditor.selection.active.line
-			// let position = vscode.window.activeTextEditor.selection.active.character
+			let line = vscode.window.activeTextEditor.selection.active.line;
 
 			// Get the word within the selection
 			let line_text = document.lineAt(line).text;
 
-			// vscode.window.showInformationMessage(`Line: ${line} - Line Text: ${line_text} - Position: ${position}`);
 			if(line_text.length > maxLineLength) {
 				vscode.window.showInformationMessage(`WARNING: Line is too long!`);
-				// Chunk the line into 5 character chunks
+				// Split the line
 				let chunks = line_text.match(new RegExp(`.{1,${maxLineLength-4}}`, 'g'));
 
 				vscode.window.activeTextEditor.edit((editBuilder) => {
@@ -38,7 +36,6 @@ function activate(context) {
 			}
 		}
 	});
-
 	context.subscriptions.push(disposable);
 }
 
