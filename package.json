@@ -10,19 +10,24 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:fill-the-paragraph.fill",
-    "onCommand:fill-the-paragraph.position"
+    "onCommand:fill-the-paragraph.fill"
   ],
   "main": "./extension.js",
   "contributes": {
     "commands": [{
       "command": "fill-the-paragraph.fill",
       "title": "Fill the Paragraph"
-    },
-    {
-      "command": "fill-the-paragraph.position",
-      "title": "Position Character"
-    }]
+    }],
+    "configuration": {
+      "title": "Fill the Paragraph",
+      "properties": {
+        "fill-the-paragraph.maxLineLength": {
+          "type": "number",
+          "default": 120,
+          "description": "Specifies the max length of characters per line to be split."
+        }
+      }
+    }
   },
   "scripts": {
     "lint": "eslint .",

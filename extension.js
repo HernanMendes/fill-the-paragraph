@@ -7,19 +7,20 @@ function activate(context) {
 	console.log('Congratulations, your extension "fill-the-paragraph" is now active!');
 
 	let disposable = vscode.commands.registerCommand('fill-the-paragraph.fill', function () {
-		const maxLineLength = 120;
 		// Get the active text editor
 		let editor = vscode.window.activeTextEditor;
+		vscode.window.showInformationMessage(`WARNING: Line is too long!`);
+		let maxLineLength = vscode.workspace.getConfiguration('fill-the-paragraph').get('maxLineLength');
 
 		if (editor) {
 			let document = editor.document;
 			let line = vscode.window.activeTextEditor.selection.active.line
-			let position = vscode.window.activeTextEditor.selection.active.character
+			// let position = vscode.window.activeTextEditor.selection.active.character
 
 			// Get the word within the selection
 			let line_text = document.lineAt(line).text;
 
-			vscode.window.showInformationMessage(`Line: ${line} - Line Text: ${line_text} - Position: ${position}`);
+			// vscode.window.showInformationMessage(`Line: ${line} - Line Text: ${line_text} - Position: ${position}`);
 			if(line_text.length > maxLineLength) {
 				vscode.window.showInformationMessage(`WARNING: Line is too long!`);
 				// Chunk the line into 5 character chunks
@@ -39,20 +40,6 @@ function activate(context) {
 	});
 
 	context.subscriptions.push(disposable);
-
-	let disposable2 = vscode.commands.registerCommand('fill-the-paragraph.position', function () {
-		// Get the active text editor
-		let editor = vscode.window.activeTextEditor;
-
-		if (editor) {
-			let line = vscode.window.activeTextEditor.selection.active.line
-			let position = vscode.window.activeTextEditor.selection.active.character
-
-			vscode.window.showInformationMessage(`Line: ${line} - Position: ${position}`);
-		}
-	});
-
-	context.subscriptions.push(disposable2);
 }
 
 function deactivate() {}
