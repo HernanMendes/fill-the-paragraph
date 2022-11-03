@@ -1,7 +1,13 @@
 {
   "name": "fill-the-paragraph",
   "displayName": "Fill the Paragraph",
+  "publisher": "HernanMendes",
   "description": "",
+  "icon": "images/fill-the-paragraph-icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HernanMendes/fill-the-paragraph"
+  },
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.69.2"
