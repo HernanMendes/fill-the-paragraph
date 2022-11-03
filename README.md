@@ -1,20 +1,14 @@
-# fill-the-paragraph README
+# Fill the Paragraph
 
-This is the README for your extension "fill-the-paragraph". After writing up a brief description, we recommend including the following sections.
+This extension "fill-the-paragraph" allows the user to split a long string line in several lines.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+In order to split a long line, you have to stand on the line you want to split, press `Ctrl+Shift+P` to open the Command Palette and select the 'Fill the Paragraph' command.
 
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
+<img src=https://raw.githubusercontent.com/microsoft/vscode-python/main/images/OpenOrCreateNotebook.gif width=1029 height=602>
 
 > Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
 
 ## Extension Settings
 
