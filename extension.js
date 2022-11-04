@@ -28,10 +28,10 @@ function activate(context) {
 					// Replace first line with first chunk
 					editBuilder.replace(new vscode.Range(line, 0, line, line_text.length), chunks[0]+'"\\');
 					for (let i = 1; i < chunks.length-1; i++) {
-						editBuilder.insert(new vscode.Position(i, 4), 'f"'+chunks[i]+'"\\');
+						editBuilder.insert(new vscode.Position(line+i, 4), 'f"'+chunks[i]+'"\\');
 					}
 					// Replace last line with last chunk
-					editBuilder.insert(new vscode.Position(chunks.length-1, 4), 'f"'+chunks[chunks.length-1]);
+					editBuilder.insert(new vscode.Position(line+chunks.length-1, 4), 'f"'+chunks[chunks.length-1]);
 				});
 			}
 		}
